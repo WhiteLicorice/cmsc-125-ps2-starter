@@ -1,0 +1,3 @@
+exit 65
+argv cases/cli/absent.board
+stderr ps2: --policy is required

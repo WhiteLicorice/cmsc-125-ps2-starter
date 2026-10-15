@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 6: the arena comes before the first request

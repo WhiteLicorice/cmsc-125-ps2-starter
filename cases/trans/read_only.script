@@ -1,0 +1,9 @@
+arena 64
+seg code 0 64 up r--
+seg heap 1024 64 up rw-
+seg stack 2048 64 down rw-
+translate code 0 read
+translate code 0 write
+translate code 0 exec
+translate code 63 read
+translate code 64 read

@@ -1,0 +1,3 @@
+exit 65
+argv --policy
+stderr ps2: --policy needs a value

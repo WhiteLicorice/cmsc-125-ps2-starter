@@ -1,0 +1,2 @@
+arena 512
+seg heap 8192 2048 up rw-

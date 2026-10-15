@@ -1,0 +1,10 @@
+# The shell scripts run under bash on every platform, so they stay LF.
+run text eol=lf
+check.sh text eol=lf
+
+# The runner compares every output line and every diagnostic. A CRLF checkout
+# on Windows would make every expectation disagree with a program that writes
+# LF.
+*.script text eol=lf
+*.args text eol=lf
+*.expect text eol=lf

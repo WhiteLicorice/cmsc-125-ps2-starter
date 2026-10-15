@@ -1,0 +1,2 @@
+arena 512
+seg code 4096 0 up r-x

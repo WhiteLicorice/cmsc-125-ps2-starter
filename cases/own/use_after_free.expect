@@ -1,0 +1,10 @@
+exit 70
+stdout arena 64 align 8 header 16 min_block 32 policy first
+stdout seg code base 4096 bound 1024 grow up prot r-x
+stdout seg heap base 8192 bound 2048 grow up prot rw-
+stdout seg stack base 12288 bound 512 grow down prot rw-
+stdout alloc A size 8 addr 16 block 24
+stdout free A addr 16 block 24
+stdout summary allocated 0 free 64 largest 64 blocks 1 internal 0 external 0.000000
+stdout result faulted
+stderr ps2: touch A: handle 'A' was released

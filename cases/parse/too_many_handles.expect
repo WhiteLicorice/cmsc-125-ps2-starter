@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 261: more than 256 handles

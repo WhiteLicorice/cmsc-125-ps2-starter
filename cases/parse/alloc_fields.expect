@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 5: alloc needs 'alloc <handle> <size>'

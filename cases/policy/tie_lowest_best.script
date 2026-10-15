@@ -1,0 +1,12 @@
+arena 192
+seg code 4096 1024 up r-x
+seg heap 8192 2048 up rw-
+seg stack 12288 512 down rw-
+alloc A 32
+alloc B 32
+alloc C 32
+free C
+free A
+dump
+alloc D 16
+dump

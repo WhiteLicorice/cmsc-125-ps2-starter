@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 2: base plus bound runs past 1048576 bytes of physical memory

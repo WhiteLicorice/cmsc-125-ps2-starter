@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 2: growth must be up or down

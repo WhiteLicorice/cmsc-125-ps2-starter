@@ -1,0 +1,3 @@
+exit 65
+argv --policy fifo cases/cli/absent.board
+stderr ps2: --policy needs first, best, or next

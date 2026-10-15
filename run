@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# run: run one script through the starter's binary.
+#
+# The public corpus calls this file, so the checks and a student type the same
+# command.
+#
+#   ./run --policy first cases/arena/first_block.script
+binary="build/cmsc-125-ps2"
+if [[ -f "$binary.exe" ]]; then
+  binary="$binary.exe"
+fi
+exec "$binary" "$@"

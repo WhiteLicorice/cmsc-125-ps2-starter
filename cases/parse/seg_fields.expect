@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 2: seg needs 'seg <name> <base> <bound> <growth> <prot>'

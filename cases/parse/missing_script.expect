@@ -1,0 +1,3 @@
+exit 65
+path cases/parse/absent/none.script
+stderr ps2: cannot open script 'cases/parse/absent/none.script'

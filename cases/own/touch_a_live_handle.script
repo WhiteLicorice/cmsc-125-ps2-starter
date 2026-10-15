@@ -1,0 +1,7 @@
+arena 64
+seg code 4096 1024 up r-x
+seg heap 8192 2048 up rw-
+seg stack 12288 512 down rw-
+alloc A 8
+touch A
+dump

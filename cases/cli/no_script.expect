@@ -1,0 +1,3 @@
+exit 65
+argv --policy first
+stderr ps2: no script file

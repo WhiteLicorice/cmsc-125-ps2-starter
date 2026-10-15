@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 1: arena must be a multiple of 8, from 64 to 65536

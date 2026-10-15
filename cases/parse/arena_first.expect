@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 1: the script opens with 'arena <bytes>'

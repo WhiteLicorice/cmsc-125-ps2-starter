@@ -1,0 +1,3 @@
+exit 65
+argv --policy first --arena 256 cases/cli/absent.board
+stderr ps2: unknown option '--arena'

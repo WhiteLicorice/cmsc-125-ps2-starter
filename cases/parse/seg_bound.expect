@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 2: bound must be at least 1

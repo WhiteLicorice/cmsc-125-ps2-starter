@@ -1,0 +1,14 @@
+exit 0
+stdout arena 64 align 8 header 16 min_block 32 policy first
+stdout seg code base 0 bound 64 grow up prot r-x
+stdout seg heap base 1024 bound 64 grow down prot rw-
+stdout seg stack base 2048 bound 64 grow down prot rw-
+stdout translate code offset 0 exec addr 0
+stdout translate code offset 63 exec addr 63
+stdout translate heap offset 0 read addr 1087
+stdout translate heap offset 63 read addr 1024
+stdout translate stack offset 0 write addr 2111
+stdout translate stack offset 63 write addr 2048
+stdout translate heap offset 64 read fault bounds
+stdout summary allocated 0 free 64 largest 64 blocks 1 internal 0 external 0.000000
+stdout result complete

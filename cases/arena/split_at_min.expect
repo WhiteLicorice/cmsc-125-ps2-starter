@@ -1,0 +1,11 @@
+exit 0
+stdout arena 96 align 8 header 16 min_block 32 policy first
+stdout seg code base 4096 bound 1024 grow up prot r-x
+stdout seg heap base 8192 bound 2048 grow up prot rw-
+stdout seg stack base 12288 bound 512 grow down prot rw-
+stdout alloc A size 48 addr 16 block 64
+stdout dump 64 32
+stdout alloc B size 16 addr 80 block 32
+stdout dump none
+stdout summary allocated 96 free 0 largest 0 blocks 0 internal 0 external 0.000000
+stdout result complete

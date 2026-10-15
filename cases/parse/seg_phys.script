@@ -1,0 +1,2 @@
+arena 512
+seg code 1048576 8 up r-x

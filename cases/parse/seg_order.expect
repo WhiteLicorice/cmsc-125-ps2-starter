@@ -1,0 +1,2 @@
+exit 65
+stderr ps2: script line 2: the segment table lists code, heap, and stack in that order

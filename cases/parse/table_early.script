@@ -1,0 +1,3 @@
+arena 512
+seg code 4096 1024 up r-x
+alloc A 16
