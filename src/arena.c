@@ -1,5 +1,5 @@
 /*
- * arena.c: the given arena. The block header accessors. Do not edit.
+ * arena.c defines the arena and its block header accessors. Do not edit it.
  *
  * The program asks the operating system for one region, once, and never asks
  * again. The region is private and anonymous, so no host address reaches the

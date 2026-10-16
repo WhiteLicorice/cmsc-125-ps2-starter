@@ -19,22 +19,22 @@ exactly, with the stdout directives. That comparison alone would let a case
 file and a broken program agree, so the runner also derives the run's own
 numbers from its own output and checks them:
 
-  * the arena line states the contract's alignment, header, and split threshold,
-    and the policy the command line asked for;
-  * each allocation's address is a multiple of the alignment, sits a header
-    past the block's offset, and the block is either exactly what the request
-    needs or a whole block that the split rule refused to divide;
-  * no two live blocks overlap, and the live blocks and the free list tile the
-    arena with no gap and no double count;
-  * every dump lists the free blocks the live blocks leave, in address order,
-    and nothing else;
-  * an allocation that follows a dump takes the block the placement policy
-    picks from the free list that dump showed;
-  * the summary's allocated, free, largest, blocks, and internal follow from
-    that tiling, and its external ratio follows from free and largest;
-  * every translation's physical address follows from the segment row, and
-    every fault follows from the bound and the protection field;
-  * the result line agrees with the exit code.
+  * The arena line states the contract's alignment, header, and split threshold.
+    It also states the policy requested on the command line.
+  * Each allocation address is a multiple of the alignment and sits one header
+    past the block offset. The block either matches the request or remains whole
+    because the split rule rejected division.
+  * Live blocks do not overlap. The live blocks and free list tile the arena
+    without gaps or double counts.
+  * Each dump lists only the free blocks left by the live blocks. It lists them
+    in address order.
+  * An allocation after a dump takes the block selected by the placement
+    policy from the free list shown in that dump.
+  * The summary's allocated, free, largest, blocks, and internal values follow
+    from the tiling. Its external ratio follows from free and largest.
+  * Each translation's physical address follows from its segment row. Each
+    fault follows from the bound and protection field.
+  * The result line agrees with the exit code.
 
 A difference the derivation explains is a failure, whatever the case file
 says. The derivation is what keeps a case from being a frozen copy of one
@@ -137,7 +137,7 @@ def policy_of(args):
 def parse_script(path):
     """Reads the machine rows of a script, leniently.
 
-    A malformed script is still a case: the refusal cases are scripts the
+    A malformed script is still a case. The refusal cases are scripts the
     program must reject, so this reader takes what it can and leaves the
     checking to the derivation.
     """
