@@ -33,7 +33,7 @@ ps2_status ps2_script_load(const char *path, ps2_policy policy, ps2_script *out,
        cases/arena/with_comments.script
        See "The Script File" in the manual. */
 
-    /* TODO: Refuse a word the grammar does not name.
+    /* TODO: Reject a word outside the grammar.
        Write "ps2: script line N: unknown directive '<word>'".
        cases/parse/unknown_directive.script
        See "The Script File" in the manual. */
@@ -109,7 +109,7 @@ ps2_status ps2_script_load(const char *path, ps2_policy policy, ps2_script *out,
        cases/parse/alloc_size.script
        See "The Script File" in the manual. */
 
-    /* TODO: Require a free or a touch to name a handle an earlier line allocates.
+    /* TODO: Require free or touch to refer to a handle that an earlier line allocates.
        Write "ps2: script line N: no such handle '<name>'".
        cases/parse/handle_unknown.script
        See "Ownership" in the manual. */

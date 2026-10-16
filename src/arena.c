@@ -1,14 +1,14 @@
 /*
- * arena.c: the given arena, and the block header accessors. Do not edit.
+ * arena.c: the given arena. The block header accessors. Do not edit.
  *
  * The program asks the operating system for one region, once, and never asks
  * again. The region is private and anonymous, so no host address reaches the
- * output: every address this program prints is an offset into the arena.
+ * output. Every address this program prints is an offset into the arena.
  *
  * A block lives at some offset in the arena. Its first 16 bytes are its
  * header: an 8-byte size, which counts the header, and an 8-byte link to the
  * next free block. A link of -1 ends the free list. The payload starts 16
- * bytes past the block, and that sum is the address the allocator hands out.
+ * bytes past the block. That sum is the address the allocator hands out.
  *
  *   offset 0                block size
  *   |<---------------------- size ---------------------->|
@@ -20,7 +20,7 @@
  */
 /*
  * macOS hides the anonymous-mapping flag from a program that asks for a strict
- * POSIX feature set, and this build asks for one. Ask Darwin for its own set
+ * POSIX feature set. This build asks for one. Ask Darwin for its own set
  * first. A feature-test macro has to arrive before any header does, so this
  * block sits above the include of ps2.h.
  */
