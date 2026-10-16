@@ -105,7 +105,7 @@ void ps2_report_translate(FILE *out, ps2_segment_id segment, long offset,
        See "The Event Lines" in the manual. */
 
     /* TODO: Write "fault bounds" for an offset outside the segment.
-       Write "fault protect" for an operation the segment refuses.
+       Write "fault protect" for an operation the segment rejects.
        cases/trans/protect_bits.script
        See "The Event Lines" in the manual. */
 

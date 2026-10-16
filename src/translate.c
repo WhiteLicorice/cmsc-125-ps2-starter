@@ -20,7 +20,7 @@ ps2_translation ps2_translate(const ps2_script *script, ps2_segment_id segment,
        See "The Two Faults" in the manual. */
 
     /* TODO: Check the row's protection field for the operation.
-       Return PS2_TR_PROTECT when the field refuses it.
+       Return PS2_TR_PROTECT when the field rejects the operation.
        cases/trans/protect_bits.script
        See "The Protection Field" in the manual. */
 
