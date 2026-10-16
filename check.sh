@@ -2,7 +2,7 @@
 # check.sh: run the complete public automated check.
 #
 # The script builds, then runs every case under the given folder. Each case
-# names its own command line, its own expected exit code, and its own expected
+# sets its own command line, its own expected exit code, and its own expected
 # output. The runner also derives the allocator's totals from the run itself,
 # so a case that agrees with a wrong expectation still fails.
 #
