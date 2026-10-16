@@ -3,7 +3,7 @@
 check_cases.py: the CMSC 125 Problem Set 2 public case runner.
 
 The runner runs the student's own ./run entry point on each .script file under
-the case directory. Each case names its command line in a matching .args file
+the case directory. Each case specifies its command line in a matching .args file
 and its expectations in a matching .expect file.
 
 An .expect file holds one directive on each line:

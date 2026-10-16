@@ -1,9 +1,9 @@
 /*
  * script.c: yours. Read and validate the script file.
  *
- * The manual's "The Script File" section states the grammar, and its refusal
- * table states every message. The whole file is read and checked before
- * anything runs, so a bad line anywhere in it produces no output at all.
+ * The manual's "The Script File" section defines the grammar. Its refusal
+ * table lists every message. The parser reads and checks the whole file before
+ * it runs a request. A bad line anywhere produces no output.
  *
  *   ps2_script_load fills *out with the machine rows and the requests, in
  *   file order, and reports a refusal through *diag.

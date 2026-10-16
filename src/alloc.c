@@ -1,9 +1,9 @@
 /*
  * alloc.c: yours. The free list over the arena.
  *
- * The free list is a singly linked list of blocks inside the arena itself, and
- * it stays in address order. See "The Free List", "Splitting", "Coalescing",
- * and "The Policies" in the manual.
+ * The free list links blocks inside the arena. The list stays in address
+ * order. See "The Free List", "Splitting", "Coalescing", and "The Policies"
+ * in the manual.
  */
 #include "ps2.h"
 
