@@ -10,7 +10,7 @@
 ps2_translation ps2_translate(const ps2_script *script, ps2_segment_id segment,
                               long offset, ps2_operation op, long *address)
 {
-    /* TODO: Read the row the request names.
+    /* TODO: Read the row selected by the request.
        The script's three requests carry code, heap, and stack.
        See "The Table" in the manual. */
 

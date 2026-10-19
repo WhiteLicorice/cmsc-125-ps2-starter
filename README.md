@@ -12,7 +12,7 @@ uses the POSIX `mmap` call and nothing else outside the C standard library.
 
 ## Pair
 
-Replace the two entries below. An assigned trio adds one entry.
+Enter two names below. An assigned trio adds one entry.
 
 - Full Name (`@github-username`)
 - Full Name (`@github-username`)
@@ -78,17 +78,16 @@ assesses the joint analysis and the collaboration history.
 ## The First Run
 
 A fresh clone builds without warnings. It passes 6 of the 104 cases and exits 1.
-That number needs care. The 6 passing cases test nothing you wrote. They are the
-command-line refusals, and `src/main.c` is given complete, so a bad option is
-refused before your code runs.
+The 6 passing cases test nothing you wrote. They check command-line refusals.
+`src/main.c` is complete, so it refuses a bad option before your code runs.
 
 The other 98 cases need `src/script.c`, `src/alloc.c`, `src/translate.c`, and
 `src/report.c`. The workflow in the Actions tab is red for the same reason. That
 state is correct for a starter. Your fork passes after you implement the four
 files.
 
-On the fork, open the Actions tab once and enable workflows. GitHub disables
-them on every fork, and the workflow run is part of the submission.
+Enable workflows in the Actions tab after you fork the repository. GitHub
+disables them on forks. The workflow run is part of the submission.
 
 ## Hosts
 
@@ -128,7 +127,7 @@ sudo apt update
 sudo apt install -y build-essential make python3
 ```
 
-Work inside the Ubuntu file system, which is your home directory. A checkout
+Work in the Ubuntu file system under your home directory. A checkout
 under `/mnt/c` works but it is slower.
 
 ### Check

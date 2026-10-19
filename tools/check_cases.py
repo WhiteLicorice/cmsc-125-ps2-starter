@@ -631,10 +631,10 @@ def run_case(script_path, repo_root):
 def main():
     parser = argparse.ArgumentParser(description="CMSC 125 Problem Set 2 case "
                                                  "runner.")
-    parser.add_argument("case_folder", help="the folder of .script cases, e.g. "
+    parser.add_argument("case_folder", help="Folder that holds the .script cases, such as "
                                             "cases")
     parser.add_argument("--repo-root", default=".",
-                        help="the repository root. Defaults to the current "
+                        help="Repository root. Defaults to the current "
                              "directory.")
     args = parser.parse_args()
 
