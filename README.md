@@ -77,7 +77,8 @@ assesses the joint analysis and the collaboration history.
 
 ## The First Run
 
-A fresh clone builds without warnings. It passes 6 of the 104 cases and exits 1.
+A fresh clone builds without warnings. It passes 6 of the 104 cases and exits 1. The same run reports 0 of the 4
+invariant checks passed.
 The 6 passing cases test nothing you wrote. They check command-line refusals.
 `src/main.c` is complete, so it refuses a bad option before your code runs.
 
@@ -156,7 +157,7 @@ and the free list, every dump against the free space the live blocks leave, the
 summary against the tiling, and every translation against its segment row. A
 case file that agrees with a wrong program still fails.
 
-The four legacy private checks are now public at `tools/private_checks.py`.
-They validate the reference and are not part of your grade. After your build,
-run them with `python3 tools/private_checks.py .`.
+`check.sh` runs the four invariant checks after the public cases. They cover
+byte-identical runs, arena stress, translation independence, and arena reuse.
+The checks are part of the same command, so no hidden suite exists.
 

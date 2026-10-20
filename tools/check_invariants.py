@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-private_checks.py: legacy private checks, now published. They validate the reference and are not part of the student's grade.
+check_invariants.py: checks the invariants outside the published case corpus.
 
-These checks do not affect the student's grade. They cover claims the public
-corpus cannot state by itself. The public corpus holds small cases and a fixed
-set of them:
+These checks are part of the check. `check.sh` runs them after the public
+corpus.
+
+These checks cover claims the case corpus cannot state by itself. The
+case corpus holds small cases and a fixed set of them:
 
 1. Two runs of one script agree byte for byte, and no line prints a host
    address. An offset into the arena or a physical address from the segment
@@ -18,7 +20,7 @@ set of them:
    returns the free list to one block of the whole arena. A byte is never lost
    and never invented.
 
-Usage: python3 private_checks.py <work directory with a build>
+Usage: python3 check_invariants.py <work directory with a build>
 Exit code: 0 when every check passes, 1 otherwise.
 """
 
@@ -203,7 +205,7 @@ CHECKS = [
 
 def main():
     if len(sys.argv) != 2:
-        print("usage: python3 private_checks.py <work directory>", file=sys.stderr)
+        print("usage: python3 check_invariants.py <work directory>", file=sys.stderr)
         return 1
     work = Path(sys.argv[1]).resolve()
     if not (work / "run").exists():
@@ -222,7 +224,7 @@ def main():
         else:
             print(f"[PASS] {title}")
     total = len(CHECKS)
-    print(f"\n{total - failures}/{total} private checks passed.")
+    print(f"\n{total - failures}/{total} invariant checks passed.")
     return 0 if failures == 0 else 1
 
 
