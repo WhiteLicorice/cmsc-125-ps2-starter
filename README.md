@@ -156,3 +156,7 @@ and the free list, every dump against the free space the live blocks leave, the
 summary against the tiling, and every translation against its segment row. A
 case file that agrees with a wrong program still fails.
 
+The four legacy private checks are now public at `tools/private_checks.py`.
+They validate the reference and are not part of your grade. After your build,
+run them with `python3 tools/private_checks.py .`.
+
