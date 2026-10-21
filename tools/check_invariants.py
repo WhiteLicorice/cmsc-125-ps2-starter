@@ -28,6 +28,7 @@ import importlib.util
 import random
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 TIMEOUT = 60
@@ -65,22 +66,23 @@ def lines_of(text):
     return [line for line in text.splitlines() if line.strip()]
 
 
-def check_two_runs_agree(work):
+def check_two_runs_agree(work, scratch):
     """Two runs agree byte for byte, and no line holds a host address."""
     script = ["arena 4096"] + SEG + [
         "alloc A 40", "alloc B 80", "alloc C 24", "free B",
         "alloc D 16", "dump", "alloc E 300", "free A", "dump",
         "translate code 900 read", "translate stack 0 write", "touch D"]
-    (work / "twice.script").write_text("\n".join(script) + "\n", encoding="utf-8")
+    path = scratch / "twice.script"
+    path.write_text("\n".join(script) + "\n", encoding="utf-8")
 
     problems = []
     for policy in ("first", "best", "next"):
-        first, stderr, code = run_script(work, policy, "twice.script")
+        first, stderr, code = run_script(work, policy, path)
         if code != 0:
             problems.append(f"{policy}: the run failed with exit {code}: "
                             f"{stderr.strip()}")
             continue
-        second, _, _ = run_script(work, policy, "twice.script")
+        second, _, _ = run_script(work, policy, path)
         if first != second:
             problems.append(f"{policy}: two runs of one script disagree")
         for line in lines_of(first):
@@ -119,15 +121,15 @@ def make_stress():
     return lines
 
 
-def check_stress_tilings(work):
+def check_stress_tilings(work, scratch):
     """A long trace keeps the arena tiled, under every policy."""
     checker = load_checker(work)
     stress = make_stress()
-    (work / "stress.script").write_text("\n".join(stress) + "\n",
-                                        encoding="utf-8")
+    path = scratch / "stress.script"
+    path.write_text("\n".join(stress) + "\n", encoding="utf-8")
     problems = []
     for policy in ("first", "best", "next"):
-        stdout, stderr, code = run_script(work, policy, "stress.script")
+        stdout, stderr, code = run_script(work, policy, path)
         if code not in (0, 70):
             problems.append(f"{policy}: the run failed with exit {code}: "
                             f"{stderr.strip()}")
@@ -139,17 +141,18 @@ def check_stress_tilings(work):
     return "; ".join(problems)
 
 
-def check_translation_independent(work):
+def check_translation_independent(work, scratch):
     """The translation lines depend on the segment table and nothing else."""
     requests = ["translate code 0 read", "translate heap 2047 write",
                 "translate stack 0 write", "translate code 1024 read",
                 "translate code 12 write"]
-    (work / "trans.script").write_text(
+    path = scratch / "trans.script"
+    path.write_text(
         "\n".join(["arena 512"] + SEG + ["alloc A 32"] + requests) + "\n",
         encoding="utf-8")
     outputs = []
     for policy in ("first", "best", "next"):
-        stdout, stderr, code = run_script(work, policy, "trans.script")
+        stdout, stderr, code = run_script(work, policy, path)
         if code != 0:
             return f"{policy}: the run failed with exit {code}: {stderr.strip()}"
         outputs.append([line for line in lines_of(stdout)
@@ -162,16 +165,17 @@ def check_translation_independent(work):
     return ""
 
 
-def check_full_cycle(work):
+def check_full_cycle(work, scratch):
     """Filling the arena and releasing it all returns one block of it."""
     names = [f"B{index}" for index in range(1, 11)]
     script = ["arena 256"] + SEG
     script.extend(f"alloc {name} 1" for name in names)
     script.extend(f"free {name}" for name in reversed(names))
     script.append("dump")
-    (work / "cycle.script").write_text("\n".join(script) + "\n", encoding="utf-8")
+    path = scratch / "cycle.script"
+    path.write_text("\n".join(script) + "\n", encoding="utf-8")
 
-    stdout, stderr, code = run_script(work, "first", "cycle.script")
+    stdout, stderr, code = run_script(work, "first", path)
     if code != 0:
         return f"the run failed with exit {code}: {stderr.strip()}"
     problems = []
@@ -213,16 +217,18 @@ def main():
         return 1
 
     failures = 0
-    for title, check in CHECKS:
-        try:
-            problem = check(work)
-        except (OSError, subprocess.SubprocessError) as error:
-            problem = f"the check could not run: {error}"
-        if problem:
-            failures += 1
-            print(f"[FAIL] {title}\n       {problem}")
-        else:
-            print(f"[PASS] {title}")
+    with tempfile.TemporaryDirectory(prefix="ps2-invariants-") as scratch:
+        scratch = Path(scratch)
+        for title, check in CHECKS:
+            try:
+                problem = check(work, scratch)
+            except (OSError, subprocess.SubprocessError) as error:
+                problem = f"the check could not run: {error}"
+            if problem:
+                failures += 1
+                print(f"[FAIL] {title}\n       {problem}")
+            else:
+                print(f"[PASS] {title}")
     total = len(CHECKS)
     print(f"\n{total - failures}/{total} invariant checks passed.")
     return 0 if failures == 0 else 1
