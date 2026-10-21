@@ -73,7 +73,7 @@ assesses the joint analysis and the collaboration history.
 |---|---|
 | 0 | Every request ran. |
 | 65 | The command line or the script file was refused. |
-| 70 | An ownership error, a mapping failure, or the arena ran out. |
+| 70 | An ownership error, an allocation failure, or an arena-mapping failure. |
 
 ## The First Run
 
@@ -113,7 +113,7 @@ Check the Python 3 version. macOS ships Python 3 with the command line tools.
 python3 --version
 ```
 
-### Windows through WSL2 Ubuntu
+### Windows Through WSL2 Ubuntu
 
 Install WSL2 with Ubuntu from PowerShell.
 
@@ -129,7 +129,7 @@ sudo apt install -y build-essential make git python3
 ```
 
 Work in the Ubuntu file system under your home directory. A checkout
-under `/mnt/c` works but it is slower.
+under `/mnt/c` works but it's slower.
 
 ### Check
 
