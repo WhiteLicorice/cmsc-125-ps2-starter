@@ -160,4 +160,3 @@ case file that agrees with a wrong program still fails.
 `check.sh` runs the four invariant checks after the public cases. They cover
 byte-identical runs, arena stress, translation independence, and arena reuse.
 The checks are part of the same command, so no hidden suite exists.
-
