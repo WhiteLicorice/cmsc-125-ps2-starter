@@ -30,9 +30,9 @@ You may change only these files and folders:
 - `student-cases/`, which holds the one case of your own
 
 Everything else is fixed. `include/ps2.h`, `src/main.c`, and `src/arena.c` are
-given to you complete. `cases/`, `tools/check_cases.py`, and the workflow are
-the grading corpus and its runner. The manual states every rule these files
-follow.
+given to you complete. `cases/`, `tools/check_cases.py`,
+`tools/check_invariants.py`, and the workflow are the grading corpus and its
+runner. The manual states every rule these files follow.
 
 ## Layout
 
@@ -73,7 +73,7 @@ assesses the joint analysis and the collaboration history.
 |---|---|
 | 0 | Every request ran. |
 | 65 | The command line or the script file was refused. |
-| 70 | An ownership error, or the arena ran out. |
+| 70 | An ownership error, a mapping failure, or the arena ran out. |
 
 ## The First Run
 
@@ -96,7 +96,7 @@ disables them on forks. The workflow run is part of the submission.
 
 ```bash
 sudo apt update
-sudo apt install -y build-essential make python3
+sudo apt install -y build-essential make git python3
 ```
 
 ### macOS
@@ -125,7 +125,7 @@ Open the Ubuntu terminal and install the tools inside it.
 
 ```bash
 sudo apt update
-sudo apt install -y build-essential make python3
+sudo apt install -y build-essential make git python3
 ```
 
 Work in the Ubuntu file system under your home directory. A checkout
