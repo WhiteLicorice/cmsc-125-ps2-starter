@@ -1,5 +1,5 @@
 <!--no-pdf-->
-# Act8 Examples
+# Activity 8 Examples
 
 `pagesim.c` is a deterministic paging translator. `demo_cases.c` holds the
 student case list. A translation case prints one page table and one table of
