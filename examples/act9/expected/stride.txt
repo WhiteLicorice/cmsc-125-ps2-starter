@@ -1,0 +1,30 @@
+case: stride
+model: page 16 B, vaddr 8 bits (vpn 4, offset 4), tlb 4 entries fully assoc LRU, asid off, tlb 1 ns, mem 100 ns
+ref: A walk 0,16,16,1
+
+trace
+    # proc  vaddr  vpn  off  result slot  tlb (mru to lru)
+    1 A         0    0    0  miss      0  [ 0 -- -- --]
+    2 A        16    1    0  miss      1  [ 1  0 -- --]
+    3 A        32    2    0  miss      2  [ 2  1  0 --]
+    4 A        48    3    0  miss      3  [ 3  2  1  0]
+    5 A        64    4    0  miss      0  [ 4  3  2  1]
+    6 A        80    5    0  miss      1  [ 5  4  3  2]
+    7 A        96    6    0  miss      2  [ 6  5  4  3]
+    8 A       112    7    0  miss      3  [ 7  6  5  4]
+    9 A       128    8    0  miss      0  [ 8  7  6  5]
+   10 A       144    9    0  miss      1  [ 9  8  7  6]
+   11 A       160   10    0  miss      2  [10  9  8  7]
+   12 A       176   11    0  miss      3  [11 10  9  8]
+   13 A       192   12    0  miss      0  [12 11 10  9]
+   14 A       208   13    0  miss      1  [13 12 11 10]
+   15 A       224   14    0  miss      2  [14 13 12 11]
+   16 A       240   15    0  miss      3  [15 14 13 12]
+
+summary
+accesses         16
+hits              0
+misses           16
+hit rate     0.0000
+eat          201.00 ns
+no tlb       200.00 ns

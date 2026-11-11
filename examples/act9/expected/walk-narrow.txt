@@ -1,0 +1,46 @@
+case: walk-narrow
+model: page 16 B, vaddr 8 bits (vpn 4, offset 4), tlb 2 entries fully assoc LRU, asid off, tlb 1 ns, mem 100 ns
+ref: A walk 0,16,4,2
+
+trace
+    # proc  vaddr  vpn  off  result slot  tlb (mru to lru)
+    1 A         0    0    0  miss      0  [ 0 --]
+    2 A         4    0    4  hit       0  [ 0 --]
+    3 A         8    0    8  hit       0  [ 0 --]
+    4 A        12    0   12  hit       0  [ 0 --]
+    5 A        16    1    0  miss      1  [ 1  0]
+    6 A        20    1    4  hit       1  [ 1  0]
+    7 A        24    1    8  hit       1  [ 1  0]
+    8 A        28    1   12  hit       1  [ 1  0]
+    9 A        32    2    0  miss      0  [ 2  1]
+   10 A        36    2    4  hit       0  [ 2  1]
+   11 A        40    2    8  hit       0  [ 2  1]
+   12 A        44    2   12  hit       0  [ 2  1]
+   13 A        48    3    0  miss      1  [ 3  2]
+   14 A        52    3    4  hit       1  [ 3  2]
+   15 A        56    3    8  hit       1  [ 3  2]
+   16 A        60    3   12  hit       1  [ 3  2]
+   17 A         0    0    0  miss      0  [ 0  3]
+   18 A         4    0    4  hit       0  [ 0  3]
+   19 A         8    0    8  hit       0  [ 0  3]
+   20 A        12    0   12  hit       0  [ 0  3]
+   21 A        16    1    0  miss      1  [ 1  0]
+   22 A        20    1    4  hit       1  [ 1  0]
+   23 A        24    1    8  hit       1  [ 1  0]
+   24 A        28    1   12  hit       1  [ 1  0]
+   25 A        32    2    0  miss      0  [ 2  1]
+   26 A        36    2    4  hit       0  [ 2  1]
+   27 A        40    2    8  hit       0  [ 2  1]
+   28 A        44    2   12  hit       0  [ 2  1]
+   29 A        48    3    0  miss      1  [ 3  2]
+   30 A        52    3    4  hit       1  [ 3  2]
+   31 A        56    3    8  hit       1  [ 3  2]
+   32 A        60    3   12  hit       1  [ 3  2]
+
+summary
+accesses         32
+hits             24
+misses            8
+hit rate     0.7500
+eat          126.00 ns
+no tlb       200.00 ns

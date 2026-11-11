@@ -1,0 +1,28 @@
+case offset
+page size 256 bytes, virtual address 12 bits, physical address 11 bits
+virtual pages 16, frames 8, vpn bits 4, offset bits 8
+
+page table
+  vpn  valid  pfn   prot   present  dirty  accessed
+  0    1      3     RWX    1        1      1
+  1    1      0     R--    1        0      1
+  2    1      7     RW-    1        1      1
+  3    1      1     R-X    1        0      1
+  4    1      5     RW-    1        0      1
+  5    0      -     -      -        -      -
+  6    0      -     -      -        -      -
+  7    0      -     -      -        -      -
+  8    0      -     -      -        -      -
+  9    0      -     -      -        -      -
+  10   0      -     -      -        -      -
+  11   0      -     -      -        -      -
+  12   0      -     -      -        -      -
+  13   0      -     -      -        -      -
+  14   0      -     -      -        -      -
+  15   0      -     -      -        -      -
+
+translation
+  vaddr   bits           vpn  offset  op  result
+  0x100   0001 00000000  1    0x00    R   frame 0, physical 0x000
+  0x1FF   0001 11111111  1    0xFF    R   frame 0, physical 0x0FF
+

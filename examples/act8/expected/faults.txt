@@ -1,0 +1,30 @@
+case faults
+page size 256 bytes, virtual address 12 bits, physical address 11 bits
+virtual pages 16, frames 8, vpn bits 4, offset bits 8
+
+page table
+  vpn  valid  pfn   prot   present  dirty  accessed
+  0    1      3     RWX    1        1      1
+  1    1      0     R--    1        0      1
+  2    1      7     RW-    1        1      1
+  3    1      1     R-X    1        0      1
+  4    1      5     RW-    1        0      1
+  5    0      -     -      -        -      -
+  6    0      -     -      -        -      -
+  7    0      -     -      -        -      -
+  8    0      -     -      -        -      -
+  9    0      -     -      -        -      -
+  10   0      -     -      -        -      -
+  11   0      -     -      -        -      -
+  12   0      -     -      -        -      -
+  13   0      -     -      -        -      -
+  14   0      -     -      -        -      -
+  15   0      -     -      -        -      -
+
+translation
+  vaddr   bits           vpn  offset  op  result
+  0x1A0   0001 10100000  1    0xA0    W   protection fault: page 1 does not allow W
+  0x2A0   0010 10100000  2    0xA0    X   protection fault: page 2 does not allow X
+  0x9FF   1001 11111111  9    0xFF    R   unmapped: page 9 is not valid
+  0x1A0   0001 10100000  1    0xA0    R   frame 0, physical 0x0A0
+

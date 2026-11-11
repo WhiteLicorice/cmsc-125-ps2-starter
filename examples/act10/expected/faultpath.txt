@@ -1,0 +1,28 @@
+case: faultpath
+model: page 4 KiB, frames 3, tlb 2 entries fifo, replacement fifo
+       the frames hold pages 2, 5, 7 in load order
+       the tlb holds, oldest first, vpn 5 -> frame 1 and vpn 7 -> frame 2
+       the dirty pages are 2; every other page is clean
+
+load  0x00003044 (vpn 3, offset 68)
+
+  step  action                          detail
+    1  split the virtual address       vpn 3, offset 68
+    2  look up the vpn in the tlb      the tlb holds vpn 5 and vpn 7, so vpn 3 misses
+    3  look up the page table          the pte for vpn 3 has present bit 0
+    4  raise a page fault              trap to the kernel
+    5  locate the page                 vpn 3 sits in swap
+    6  pick a victim (fifo)            frame 0 holds vpn 2, loaded first
+    7  check the victim dirty bit      vpn 2 is dirty, write it back to swap
+    8  clear the victim's present bit  vpn 2: present 0, copy in swap
+    9  read the page from swap         vpn 3 into frame 0
+   10  update the page table           vpn 3 -> frame 0, present 1
+   11  update the tlb (fifo)           insert vpn 3 -> frame 0, evict vpn 5
+   12  restart the load                tlb hit, frame 0
+   13  form the physical address       frame 0 * 4 KiB + 68
+
+note: vpn 2 holds no tlb entry, so no victim invalidation runs
+frames after the load: page 3 in frame 0, page 5 in frame 1, page 7 in frame 2
+tlb after the load: vpn 7 -> frame 2, vpn 3 -> frame 0
+physical address 0x00000044
+counts: tlb misses 1, page-table lookups 1, page faults 1, evictions 1, victim ptes cleared 1, write-backs 1

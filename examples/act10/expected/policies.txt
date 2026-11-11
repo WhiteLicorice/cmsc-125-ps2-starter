@@ -1,0 +1,91 @@
+case: policies
+model: page 4 KiB, reference 0 1 2 0 1 3 0 1 2 4 0 1
+       frames start empty, first access to a page misses, ties break to the lowest page number
+
+policy optimal, frames 3
+  ref  page  frames  result  evicted
+    0     0  0 . .   miss    -
+    1     1  0 1 .   miss    -
+    2     2  0 1 2   miss    -
+    3     0  0 1 2   hit     -
+    4     1  0 1 2   hit     -
+    5     3  0 1 3   miss    2
+    6     0  0 1 3   hit     -
+    7     1  0 1 3   hit     -
+    8     2  0 1 2   miss    3
+    9     4  0 1 4   miss    2
+   10     0  0 1 4   hit     -
+   11     1  0 1 4   hit     -
+  hits 6, misses 6, hit rate 50.00%
+
+policy fifo, frames 3
+  ref  page  frames  result  evicted
+    0     0  0 . .   miss    -
+    1     1  0 1 .   miss    -
+    2     2  0 1 2   miss    -
+    3     0  0 1 2   hit     -
+    4     1  0 1 2   hit     -
+    5     3  3 1 2   miss    0
+    6     0  3 0 2   miss    1
+    7     1  3 0 1   miss    2
+    8     2  2 0 1   miss    3
+    9     4  2 4 1   miss    0
+   10     0  2 4 0   miss    1
+   11     1  1 4 0   miss    2
+  hits 2, misses 10, hit rate 16.67%
+
+policy random, frames 3
+  ref  page  frames  result  evicted
+    0     0  0 . .   miss    -
+    1     1  0 1 .   miss    -
+    2     2  0 1 2   miss    -
+    3     0  0 1 2   hit     -
+    4     1  0 1 2   hit     -
+    5     3  0 1 3   miss    2
+    6     0  0 1 3   hit     -
+    7     1  0 1 3   hit     -
+    8     2  2 1 3   miss    0
+    9     4  4 1 3   miss    2
+   10     0  0 1 3   miss    4
+   11     1  0 1 3   hit     -
+  hits 5, misses 7, hit rate 41.67%
+
+policy lru, frames 3
+  ref  page  frames  result  evicted
+    0     0  0 . .   miss    -
+    1     1  0 1 .   miss    -
+    2     2  0 1 2   miss    -
+    3     0  0 1 2   hit     -
+    4     1  0 1 2   hit     -
+    5     3  0 1 3   miss    2
+    6     0  0 1 3   hit     -
+    7     1  0 1 3   hit     -
+    8     2  0 1 2   miss    3
+    9     4  4 1 2   miss    0
+   10     0  4 0 2   miss    1
+   11     1  4 0 1   miss    2
+  hits 4, misses 8, hit rate 33.33%
+
+policy clock, frames 3
+  ref  page  frames  result  evicted
+    0     0  0 . .   miss    -
+    1     1  0 1 .   miss    -
+    2     2  0 1 2   miss    -
+    3     0  0 1 2   hit     -
+    4     1  0 1 2   hit     -
+    5     3  3 1 2   miss    0
+    6     0  3 0 2   miss    1
+    7     1  3 0 1   miss    2
+    8     2  2 0 1   miss    3
+    9     4  2 4 1   miss    0
+   10     0  2 4 0   miss    1
+   11     1  1 4 0   miss    2
+  hits 2, misses 10, hit rate 16.67%
+
+summary
+  policy   frames   hits  misses  hit rate
+  optimal       3      6       6    50.00%
+  fifo          3      2      10    16.67%
+  random        3      5       7    41.67%
+  lru           3      4       8    33.33%
+  clock         3      2      10    16.67%

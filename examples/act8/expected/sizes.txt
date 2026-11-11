@@ -1,0 +1,13 @@
+case sizes
+linear page table size
+  addr bits page bytes  vpn bits entries   pte bytes table bytes table size
+  32        4096        20       1048576   4         4194304     4 MiB
+  32        16384       18       262144    4         1048576     1 MiB
+  20        4096        8        256       4         1024        1 KiB
+
+sv32 two level
+  virtual address 32 bits, page size 4096 bytes, offset bits 12
+  level    vpn bits  entries  pte bytes  table bytes  table size
+  level-1  10        1024     4          4096         4 KiB
+  level-0  10        1024     4          4096         4 KiB
+

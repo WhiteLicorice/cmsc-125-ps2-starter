@@ -1,0 +1,46 @@
+case: walk
+model: page 16 B, vaddr 8 bits (vpn 4, offset 4), tlb 4 entries fully assoc LRU, asid off, tlb 1 ns, mem 100 ns
+ref: A walk 0,16,4,2
+
+trace
+    # proc  vaddr  vpn  off  result slot  tlb (mru to lru)
+    1 A         0    0    0  miss      0  [ 0 -- -- --]
+    2 A         4    0    4  hit       0  [ 0 -- -- --]
+    3 A         8    0    8  hit       0  [ 0 -- -- --]
+    4 A        12    0   12  hit       0  [ 0 -- -- --]
+    5 A        16    1    0  miss      1  [ 1  0 -- --]
+    6 A        20    1    4  hit       1  [ 1  0 -- --]
+    7 A        24    1    8  hit       1  [ 1  0 -- --]
+    8 A        28    1   12  hit       1  [ 1  0 -- --]
+    9 A        32    2    0  miss      2  [ 2  1  0 --]
+   10 A        36    2    4  hit       2  [ 2  1  0 --]
+   11 A        40    2    8  hit       2  [ 2  1  0 --]
+   12 A        44    2   12  hit       2  [ 2  1  0 --]
+   13 A        48    3    0  miss      3  [ 3  2  1  0]
+   14 A        52    3    4  hit       3  [ 3  2  1  0]
+   15 A        56    3    8  hit       3  [ 3  2  1  0]
+   16 A        60    3   12  hit       3  [ 3  2  1  0]
+   17 A         0    0    0  hit       0  [ 0  3  2  1]
+   18 A         4    0    4  hit       0  [ 0  3  2  1]
+   19 A         8    0    8  hit       0  [ 0  3  2  1]
+   20 A        12    0   12  hit       0  [ 0  3  2  1]
+   21 A        16    1    0  hit       1  [ 1  0  3  2]
+   22 A        20    1    4  hit       1  [ 1  0  3  2]
+   23 A        24    1    8  hit       1  [ 1  0  3  2]
+   24 A        28    1   12  hit       1  [ 1  0  3  2]
+   25 A        32    2    0  hit       2  [ 2  1  0  3]
+   26 A        36    2    4  hit       2  [ 2  1  0  3]
+   27 A        40    2    8  hit       2  [ 2  1  0  3]
+   28 A        44    2   12  hit       2  [ 2  1  0  3]
+   29 A        48    3    0  hit       3  [ 3  2  1  0]
+   30 A        52    3    4  hit       3  [ 3  2  1  0]
+   31 A        56    3    8  hit       3  [ 3  2  1  0]
+   32 A        60    3   12  hit       3  [ 3  2  1  0]
+
+summary
+accesses         32
+hits             28
+misses            4
+hit rate     0.8750
+eat          113.50 ns
+no tlb       200.00 ns
