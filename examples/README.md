@@ -28,4 +28,5 @@ make clean
 with the recorded output. `make clean` removes the build output. Read the
 `README.md` in each folder for the model and the cases.
 
-Run these commands inside Ubuntu. The recorded output comes from that environment.
+Run these commands inside Ubuntu. The recorded output comes from that
+environment.

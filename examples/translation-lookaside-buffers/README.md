@@ -8,8 +8,8 @@ The same command prints the same output on every machine.
 
 The program runs in Linux. On Windows, run it inside Ubuntu under Windows
 Subsystem for Linux (WSL2). On macOS, run it inside an Ubuntu 24.04 Server
-virtual machine under UTM. The bootcamp manual "Getting Your Machine Ready" has the setup for that
-virtual machine. Run every command inside that Ubuntu guest.
+virtual machine under UTM. The bootcamp manual "Getting Your Machine Ready" has
+the setup for that virtual machine. Run every command inside that Ubuntu guest.
 
 ## Requirements
 

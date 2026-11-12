@@ -8,9 +8,9 @@ the same command prints the same output on every machine.
 
 The program runs on Linux. On Windows, run it inside Ubuntu under Windows
 Subsystem for Linux (WSL2). On macOS, run it inside an Ubuntu 24.04 Server
-virtual machine under UTM. The bootcamp manual "Getting Your Machine Ready" has the setup for that
-virtual machine. On Linux, run it in your own terminal. Run every
-command inside the Ubuntu guest, on Windows or on a Mac.
+virtual machine under UTM. The bootcamp manual "Getting Your Machine Ready" has
+the setup for that virtual machine. On Linux, run it in your own terminal. Run
+every command inside the Ubuntu guest, on Windows or on a Mac.
 
 ## Requirements
 
