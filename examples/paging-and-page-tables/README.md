@@ -210,6 +210,9 @@ Build these inside Ubuntu. Run them there, on any of the three hosts:
 | macOS | An Ubuntu 24.04 Server virtual machine under UTM |
 | Linux | Your own kernel |
 
+The bootcamp manual "Getting Your Machine Ready" has the setup for that
+virtual machine.
+
 `pagesim.c` uses the C standard library only. Build and run it inside that
 Ubuntu.
 

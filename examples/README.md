@@ -11,9 +11,9 @@ to see the mechanism before you write the code.
 
 | Folder | Subtopic |
 |:--|:--|
-| `paging-and-page-tables` | Paging and Page Tables |
-| `translation-lookaside-buffers` | Translation Lookaside Buffers |
-| `memory-replacement` | Memory Replacement |
+| `paging-and-page-tables` | "Paging and Page Tables" |
+| `translation-lookaside-buffers` | "Translation Lookaside Buffers" |
+| `memory-replacement` | "Memory Replacement" |
 
 Build and check one folder:
 
@@ -28,4 +28,4 @@ make clean
 with the recorded output. `make clean` removes the build output. Read the
 `README.md` in each folder for the model and the cases.
 
-Run these commands inside Ubuntu. The examples need Linux.
+Run these commands inside Ubuntu. The recorded output comes from that environment.

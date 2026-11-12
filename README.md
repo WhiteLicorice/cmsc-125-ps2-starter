@@ -12,7 +12,7 @@ uses the POSIX `mmap` call and nothing else outside the C standard library.
 
 ## Pair
 
-Enter two names below. An assigned trio adds one entry.
+Enter the two names below.
 
 - Full Name (`@github-username`)
 - Full Name (`@github-username`)
@@ -66,7 +66,8 @@ make clean                # remove the build directory
 
 `check.sh` is the complete public automated check. No hidden suite exists. Read
 `tools/check_cases.py` before you trust a green run. The rubric separately
-assesses the joint analysis and the collaboration history.
+assesses the public corpus, your implementation and engineering, and your joint
+analysis.
 
 ## Exit Codes
 

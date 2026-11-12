@@ -30,9 +30,10 @@ An `.expect` file holds one directive on a line.
 | `path <relative>` | pass this script path in place of the case file |
 | `argv <arguments>` | run this command line instead of the case's own |
 
-Name a boundary the published corpus misses. A split that leaves exactly the
-split threshold, a request the arena cannot hold even though the free total says
-it can, and a translation at the highest legal offset are all good choices.
+Name a boundary the published corpus misses. A handle name of exactly 15
+characters, a script line of exactly 511 bytes, and a base plus bound of exactly
+1048576 bytes are all good choices. The corpus tests each one only on the
+invalid side.
 
 ## Run Your Case
 
