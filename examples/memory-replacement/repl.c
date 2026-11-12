@@ -5,7 +5,7 @@
  *
  * The program prints the replacement traces for one workload. It prints one
  * table for each policy and each frame count that the case lists. The model is
- * the one the activity defines:
+ * the one this folder's README defines:
  *
  *   - The page size is 4 KiB and every address is 32 bits.
  *   - A reference string is a list of virtual page numbers, one access per

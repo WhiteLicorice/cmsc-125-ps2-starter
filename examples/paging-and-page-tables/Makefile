@@ -1,4 +1,4 @@
-# Build and check the act8 examples.
+# Build and check the paging-and-page-tables examples.
 #
 # pagesim.c holds the model and the printer. demo_cases.c holds the
 # student-facing cases. A translation case prints a page table and a table of

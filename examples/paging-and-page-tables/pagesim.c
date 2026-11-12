@@ -1,7 +1,7 @@
 /*
  * pagesim.c
  *
- * A deterministic paging translator for CMSC 125 activity 8.
+ * A deterministic paging translator.
  *
  * This file holds the model and the printer. The case list is linked in from
  * the build. A case is either a translation case, which prints a page table

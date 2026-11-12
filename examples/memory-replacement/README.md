@@ -1,16 +1,15 @@
 <!--no-pdf-->
-# Activity 10 Examples
+# Memory Replacement
 
 This folder holds one program. `repl.c` is a page-replacement simulator. It
-implements the model this activity defines. It prints the replacement traces
+implements the model below. It prints the replacement traces
 and the fault path for the three cases below. The program is deterministic, so
 the same command prints the same output on every machine.
 
 The program runs on Linux. On Windows, run it inside Ubuntu under Windows
-Subsystem for Linux (WSL2). On macOS, run it inside the Ubuntu 24.04 Server
-virtual machine from the `b1` manual, Part 4, run with UTM. On Linux, run it in
-your own terminal. Run every command inside the Ubuntu guest, on Windows or on
-a Mac.
+Subsystem for Linux (WSL2). On macOS, run it inside an Ubuntu 24.04 Server
+virtual machine under UTM. On Linux, run it in your own terminal. Run every
+command inside the Ubuntu guest, on Windows or on a Mac.
 
 ## Requirements
 
@@ -21,19 +20,27 @@ a Mac.
 
 Build the simulator.
 
-    make
+```bash
+make
+```
 
 Build the simulator, run every case, and compare the output.
 
-    make check
+```bash
+make check
+```
 
 Delete the simulator.
 
-    make clean
+```bash
+make clean
+```
 
 Build the simulator with the compiler directly.
 
-    cc -std=c11 -Wall -Wextra -Werror -o repl repl.c
+```bash
+cc -std=c11 -Wall -Wextra -Werror -o repl repl.c
+```
 
 The compile must stay clean. `-Werror` turns every warning into an error.
 
@@ -46,7 +53,7 @@ every case passes. It exits nonzero when a case fails.
 
 ## The Model
 
-The simulator implements the model below. The activity states the same model.
+The simulator implements the model below.
 
 - The page size is 4 KiB. Every address is 32 bits.
 - A reference string is a list of virtual page numbers. One step accesses one
@@ -73,10 +80,11 @@ Each command below prints the text under it. The text is the expected output.
 
 ### `policies`
 
-The first case runs one reference string under five policies. It's the worked
-example for Checkpoint 1.
+The first case runs one reference string under five policies.
 
-    ./repl --case policies
+```bash
+./repl --case policies
+```
 
 ```
 case: policies
@@ -175,9 +183,11 @@ summary
 ### `belady`
 
 The second case runs one reference string under FIFO at three frames and at
-four frames. It's the worked example for Checkpoint 2.
+four frames.
 
-    ./repl --case belady
+```bash
+./repl --case belady
+```
 
 ```
 case: belady
@@ -259,10 +269,11 @@ summary
 ### `faultpath`
 
 The third case follows one load from its virtual address through the TLB, the
-page table, one page fault, and one replacement. It's the worked example for
-Checkpoint 3.
+page table, one page fault, and one replacement.
 
-    ./repl --case faultpath
+```bash
+./repl --case faultpath
+```
 
 ```
 case: faultpath
@@ -301,8 +312,8 @@ Build and run these inside Ubuntu, on any of the three hosts:
 
 | Host | The Ubuntu you use |
 |:--|:--|
-| Windows | WSL2, from b1 |
-| macOS | The Ubuntu 24.04 Server virtual machine from b1 Part 4, run under UTM |
+| Windows | WSL2 Ubuntu |
+| macOS | An Ubuntu 24.04 Server virtual machine under UTM |
 | Linux | Your own kernel |
 
 `repl.c` uses the C standard library only. It builds and runs on native macOS

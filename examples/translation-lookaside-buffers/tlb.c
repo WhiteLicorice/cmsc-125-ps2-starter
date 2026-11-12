@@ -4,7 +4,7 @@
  * A deterministic translation lookaside buffer simulator.
  *
  * The program prints one reference string's TLB trace and its summary. The
- * model is the one the activity defines:
+ * model is the one this folder's README defines:
  *
  *   - A virtual address is split into a virtual page number and an offset.
  *   - The TLB is fully associative, so an entry can hold any page.

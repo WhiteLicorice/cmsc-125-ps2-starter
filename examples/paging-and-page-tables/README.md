@@ -1,5 +1,5 @@
 <!--no-pdf-->
-# Activity 8 Examples
+# Paging and Page Tables
 
 `pagesim.c` is a deterministic paging translator. `demo_cases.c` holds the
 student case list. A translation case prints one page table and one table of
@@ -12,7 +12,7 @@ This folder holds the worked-example cases only.
 
 ## The Model
 
-The translator uses one fixed model. The activity grades with the same model.
+The translator uses one fixed model.
 
 - A page is 256 bytes. A frame holds one page, so a frame is also 256 bytes.
 - A virtual address is 12 bits wide. The top 4 bits are the virtual page
@@ -81,7 +81,7 @@ Each block below is the exact text in `expected/<case>.txt`.
 
 ### Basic
 
-```text
+```
 case basic
 page size 256 bytes, virtual address 12 bits, physical address 11 bits
 virtual pages 16, frames 8, vpn bits 4, offset bits 8
@@ -116,7 +116,7 @@ translation
 
 ### Offset
 
-```text
+```
 case offset
 page size 256 bytes, virtual address 12 bits, physical address 11 bits
 virtual pages 16, frames 8, vpn bits 4, offset bits 8
@@ -149,7 +149,7 @@ translation
 
 ### Faults
 
-```text
+```
 case faults
 page size 256 bytes, virtual address 12 bits, physical address 11 bits
 virtual pages 16, frames 8, vpn bits 4, offset bits 8
@@ -184,7 +184,7 @@ translation
 
 ### Sizes
 
-```text
+```
 case sizes
 linear page table size
   addr bits page bytes  vpn bits entries   pte bytes table bytes table size
@@ -206,8 +206,8 @@ Build these inside Ubuntu. Run them there, on any of the three hosts:
 
 | Host | The Ubuntu you use |
 |:--|:--|
-| Windows | WSL2, from b1 |
-| macOS | The Ubuntu 24.04 Server virtual machine from b1 Part 4, run under UTM |
+| Windows | WSL2 Ubuntu |
+| macOS | An Ubuntu 24.04 Server virtual machine under UTM |
 | Linux | Your own kernel |
 
 `pagesim.c` uses the C standard library only. Build and run it inside that
@@ -215,7 +215,7 @@ Ubuntu.
 
 ## Machine Used for These Runs
 
-```text
+```
 cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 Linux 6.6.87.2-microsoft-standard-WSL2 x86_64
 GNU Make 4.3

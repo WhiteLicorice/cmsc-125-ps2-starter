@@ -1,7 +1,7 @@
 /*
  * pagesim.h
  *
- * Shared declarations for the CMSC 125 activity 8 paging translator.
+ * Shared declarations for the paging translator.
  *
  * The program that links pagesim.c supplies the case list. The student-facing
  * build supplies the demo and worked-example cases in demo_cases.c. Another

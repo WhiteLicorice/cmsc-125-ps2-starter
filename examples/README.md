@@ -1,23 +1,24 @@
 <!--no-pdf-->
-# Activity Examples
+# Worked Examples
 
-This folder holds the worked examples for the activities that precede Problem
-Set 2, Memory Mechanisms, Allocation, and Freeing. Each activity has its own
-folder. Each folder holds its own `make` and `make check`.
+This folder holds the worked examples for three Unit 1 subtopics that Problem
+Set 2, Memory Mechanisms, Allocation, and Freeing, draws on in its Background
+section. Each subtopic has its own folder. Each folder holds its own `make` and
+`make check`.
 
-These examples are not graded. They are not part of the work you submit. Use
-them to see the mechanism before you write the code.
+These examples aren't graded. They aren't part of the work you submit. Use them
+to see the mechanism before you write the code.
 
-| Folder | Activity |
+| Folder | Subtopic |
 |:--|:--|
-| `act8` | Paging, Page Tables, and Address Translation |
-| `act9` | Translation Lookaside Buffers |
-| `act10` | Beyond Physical Memory, and the Whole Memory Path |
+| `paging-and-page-tables` | Paging and Page Tables |
+| `translation-lookaside-buffers` | Translation Lookaside Buffers |
+| `memory-replacement` | Memory Replacement |
 
 Build and check one folder:
 
 ```bash
-cd examples/act8
+cd examples/paging-and-page-tables
 make
 make check
 make clean

@@ -1,15 +1,14 @@
 <!--no-pdf-->
-# Activity 9 Examples
+# Translation Lookaside Buffers
 
 This folder holds one program. `tlb.c` is a translation lookaside buffer
-simulator. It implements the model the activity defines. It prints the TLB
+simulator. It implements the model below. It prints the TLB
 trace and the summary for one reference string. The program is deterministic.
 The same command prints the same output on every machine.
 
 The program runs in Linux. On Windows, run it inside Ubuntu under Windows
-Subsystem for Linux (WSL2). On macOS, run it inside the Ubuntu 24.04 Server
-virtual machine from the `b1` manual, Part 4, under UTM. Run every command
-inside that Ubuntu guest.
+Subsystem for Linux (WSL2). On macOS, run it inside an Ubuntu 24.04 Server
+virtual machine under UTM. Run every command inside that Ubuntu guest.
 
 ## Requirements
 
@@ -20,19 +19,27 @@ inside that Ubuntu guest.
 
 Build the simulator.
 
-    make
+```bash
+make
+```
 
 Build the simulator, run every case, and compare the output.
 
-    make check
+```bash
+make check
+```
 
 Delete the simulator.
 
-    make clean
+```bash
+make clean
+```
 
 Build the simulator with the compiler directly.
 
-    cc -std=c11 -Wall -Wextra -Werror -o tlb tlb.c
+```bash
+cc -std=c11 -Wall -Wextra -Werror -o tlb tlb.c
+```
 
 The compile must stay clean. `-Werror` turns every warning into an error.
 
@@ -45,7 +52,7 @@ every case passes. It exits nonzero when a case fails.
 
 ## The Model
 
-The simulator implements the model below. The activity states the same model.
+The simulator implements the model below.
 
 - The page size is 16 bytes. A virtual address is 8 bits wide.
 - The top 4 bits of an address are the virtual page number. The low 4 bits are
@@ -104,7 +111,9 @@ starts at virtual address 0, so it covers four pages. The code reads the array
 twice. The TLB holds four entries, so the whole array fits, and the second pass
 hits every time.
 
-    ./tlb --case walk
+```bash
+./tlb --case walk
+```
 
 ```
 case: walk
@@ -164,7 +173,9 @@ Four misses out of 32 accesses is a hit rate of 0.8750.
 The same reference string. The TLB holds two entries, so it can't hold all
 four pages at once.
 
-    ./tlb --case walk-narrow
+```bash
+./tlb --case walk-narrow
+```
 
 ```
 case: walk-narrow
@@ -224,7 +235,9 @@ keeps losing a page that the walk needs again.
 One process reads 16 integers, one every 16 bytes. Each access lands on a
 different page. No page is read twice.
 
-    ./tlb --case stride
+```bash
+./tlb --case stride
+```
 
 ```
 case: stride
@@ -269,7 +282,9 @@ Two processes read the same four integers. Process A runs, then process B runs,
 then A runs again. The run doesn't use address space identifiers, so the
 switch empties the TLB.
 
-    ./tlb --case switch-flush
+```bash
+./tlb --case switch-flush
+```
 
 ```
 case: switch-flush
@@ -309,7 +324,9 @@ A emptied it again, so A misses again at access 9.
 The same reference string. This run uses address space identifiers, so the TLB
 keeps both processes at once.
 
-    ./tlb --case switch-asid
+```bash
+./tlb --case switch-asid
+```
 
 ```
 case: switch-asid
@@ -348,7 +365,9 @@ A's entry survives B's run, so access 9 hits. The hit rate rises from 0.7500 to
 This case holds no reference string. It prints the effective access time for
 several hit rates.
 
-    ./tlb --case eat
+```bash
+./tlb --case eat
+```
 
 ```
 case: eat
