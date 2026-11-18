@@ -336,7 +336,7 @@ static void report_eat(const struct model *m)
         double eat = (double)m->tlb_ns + (double)m->mem_ns
                      + (1.0 - rate) * (double)m->mem_ns;
 
-        printf("  %8.4f %12d %9.2f %9.2fx\n", rate,
+        printf("  %8.4f %12d %9.2f %10.3fx\n", rate,
                (int)((1.0 - rate) * 1000.0 + 0.5), eat,
                2.0 * (double)m->mem_ns / eat);
     }

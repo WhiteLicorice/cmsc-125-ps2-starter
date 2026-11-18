@@ -375,18 +375,20 @@ case: eat
 model: page 16 B, vaddr 8 bits (vpn 4, offset 4), tlb 4 entries fully assoc LRU, asid off, tlb 1 ns, mem 100 ns
 effective access time
   hit rate  misses/1000  eat (ns)  vs no tlb
-    1.0000            0    101.00      1.98x
-    0.9900           10    102.00      1.96x
-    0.9800           20    103.00      1.94x
-    0.9500           50    106.00      1.89x
-    0.9000          100    111.00      1.80x
-    0.8000          200    121.00      1.65x
-    0.7500          250    126.00      1.59x
-    0.0000         1000    201.00      1.00x
+    1.0000            0    101.00      1.980x
+    0.9900           10    102.00      1.961x
+    0.9800           20    103.00      1.942x
+    0.9500           50    106.00      1.887x
+    0.9000          100    111.00      1.802x
+    0.8000          200    121.00      1.653x
+    0.7500          250    126.00      1.587x
+    0.0000         1000    201.00      0.995x
 ```
 
 The last column is the no-TLB cost divided by the effective access time. A
-machine with no TLB reads the page table on every access and pays 200 ns.
+machine with no TLB reads the page table on every access and pays 200 ns. At a
+zero hit rate the column falls just below 1.00x, because the lookup runs even
+when it fails.
 
 ## Files
 
