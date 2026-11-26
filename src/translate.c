@@ -2,8 +2,8 @@
  * translate.c: yours. The segment table.
  *
  * Each row holds a physical base, a bound, a growth direction, and three
- * protection characters in the order read, write, execute. See "The Segment
- * Table", "Growth Direction", and "The Faults" in the manual.
+ * protection characters in the order read, write, execute. See "The Table",
+ * "Two Growth Directions", and "The Two Faults" in the manual.
  */
 #include "ps2.h"
 
@@ -11,7 +11,7 @@ ps2_translation ps2_translate(const ps2_script *script, ps2_segment_id segment,
                               long offset, ps2_operation op, long *address)
 {
     /* TODO: Read the row selected by the request.
-       The script's three requests carry code, heap, and stack.
+       The script's three segment rows carry code, heap, and stack.
        See "The Table" in the manual. */
 
     /* TODO: Compare the offset with the row's bound.

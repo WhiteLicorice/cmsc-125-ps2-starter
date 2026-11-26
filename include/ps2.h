@@ -302,7 +302,7 @@ void ps2_report_release_at(FILE *out, const ps2_allocation *record);
 /* touch <handle> addr N */
 void ps2_report_touch(FILE *out, const char *handle, long address);
 
-/* one dump line per free block, or "dump none" when the list is empty */
+/* one dump line listing every free block, or "dump none" when the list is empty */
 void ps2_report_dump(FILE *out, const long *offsets, const long *sizes,
                      size_t count);
 
