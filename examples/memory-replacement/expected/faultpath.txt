@@ -25,4 +25,4 @@ note: vpn 2 holds no tlb entry, so no victim invalidation runs
 frames after the load: page 3 in frame 0, page 5 in frame 1, page 7 in frame 2
 tlb after the load: vpn 7 -> frame 2, vpn 3 -> frame 0
 physical address 0x00000044
-counts: tlb misses 1, page-table lookups 1, page faults 1, evictions 1, victim ptes cleared 1, write-backs 1
+counts: tlb misses 1, page-table lookups 1, page faults 1, evictions 1, victim present bits cleared 1, write-backs 1
