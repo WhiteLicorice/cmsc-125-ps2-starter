@@ -46,6 +46,7 @@ src/translate.c       yours: the segment table and the translations
 src/report.c          yours: every line the program writes
 cases/                the complete public corpus
 student-cases/        the one boundary or failure case of your own
+examples/             the worked examples, named by subtopic
 tools/check_cases.py  the runner that grades the corpus
 tools/check_invariants.py  the checker for claims the cases cannot state
 ANALYSIS.md           the joint analysis that you create
