@@ -370,7 +370,7 @@ static void run_faultpath(const struct model *m)
     printf("\n");
     printf("physical address 0x%08x\n", pa);
     printf("counts: tlb misses 1, page-table lookups 1, page faults 1, "
-           "evictions 1, victim ptes cleared 1, write-backs %d\n", dirty ? 1 : 0);
+           "evictions 1, victim present bits cleared 1, write-backs %d\n", dirty ? 1 : 0);
 }
 
 static int parse_numbers(const char *text, int *out, int maximum)
