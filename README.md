@@ -81,12 +81,12 @@ Analysis, and Collaboration.
 
 ## The First Run
 
-A fresh clone builds without warnings. It passes 6 of the 106 cases and exits 1. The same run reports 0 of the 4
-invariant checks passed.
+A fresh clone builds without warnings. It reports `6/106 cases passed` and
+exits 1. The same run reports 0 of the 4 invariant checks passed.
 The 6 passing cases test nothing you wrote. They check command-line refusals.
 `src/main.c` is complete, so it refuses a bad option before your code runs.
 
-The other 98 cases need `src/script.c`, `src/alloc.c`, `src/translate.c`, and
+The other 100 cases need `src/script.c`, `src/alloc.c`, `src/translate.c`, and
 `src/report.c`. The workflow in the Actions tab is red for the same reason. That
 state is correct for a starter. Your fork passes after you implement the four
 files.
