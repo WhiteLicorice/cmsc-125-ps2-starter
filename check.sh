@@ -7,7 +7,7 @@
 # so a case that agrees with a wrong expectation still fails.
 #
 #   ./check.sh                 run the published corpus in cases/
-#   ./check.sh student-cases   run the pair's own cases in student-cases/
+#   ./check.sh student-cases   run the group's own cases in student-cases/
 set -u
 
 case_folder="${1:-cases}"

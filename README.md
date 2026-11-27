@@ -163,7 +163,7 @@ The 106 cases under `cases/` are the cases the instructor grades with. Each
 file holds the command line. Each `.expect` file holds the expected exit code,
 the expected diagnostic, and every expected output line.
 
-The one case your pair writes lives under `student-cases/`. That folder holds a
+The one case your group writes lives under `student-cases/`. That folder holds a
 short README and an example in the same three-file form. Run it with
 `./check.sh student-cases`.
 
