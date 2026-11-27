@@ -1,2 +1,2 @@
 exit 65
-stderr ps2: script line 2: protection must be three characters of r, w, x, or -
+stderr ps2: script line 2: protection must be three characters, read r or -, write w or -, exec x or -

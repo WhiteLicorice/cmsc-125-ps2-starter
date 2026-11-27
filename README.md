@@ -8,7 +8,8 @@ one placement policy. The translator turns an offset inside a segment into a
 physical address, or reports the fault the access raises. A script drives both.
 
 This project runs on Linux, on macOS, and on Windows through WSL2 Ubuntu. It
-uses the POSIX `mmap` call and nothing else outside the C standard library.
+maps memory with the POSIX `mmap` call. The C standard library and POSIX helpers
+such as `strtok_r` serve the rest of the program.
 
 ## Pair
 
@@ -80,7 +81,7 @@ Analysis, and Collaboration.
 
 ## The First Run
 
-A fresh clone builds without warnings. It passes 6 of the 104 cases and exits 1. The same run reports 0 of the 4
+A fresh clone builds without warnings. It passes 6 of the 106 cases and exits 1. The same run reports 0 of the 4
 invariant checks passed.
 The 6 passing cases test nothing you wrote. They check command-line refusals.
 `src/main.c` is complete, so it refuses a bad option before your code runs.
@@ -157,7 +158,7 @@ python3 --version
 
 ## The Corpus
 
-The 104 cases under `cases/` are the cases the instructor grades with. Each
+The 106 cases under `cases/` are the cases the instructor grades with. Each
 `.script` file holds a machine description and a list of requests. Each `.args`
 file holds the command line. Each `.expect` file holds the expected exit code,
 the expected diagnostic, and every expected output line.
