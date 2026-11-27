@@ -79,8 +79,11 @@ ps2_status ps2_script_load(const char *path, ps2_policy policy, ps2_script *out,
        See "The Segment Rows" in the manual. */
 
     /* TODO: Refuse a protection field that is not three characters.
-       Accept r, w, x, and '-' only.
+       Require read r or '-', then write w or '-', then exec x or '-'.
+       Write "ps2: script line N: protection must be three characters, read r or -, write w or -, exec x or -".
        cases/parse/seg_prot.script
+       cases/parse/seg_prot_read.script
+       cases/parse/seg_prot_write.script
        See "The Protection Field" in the manual. */
 
     /* TODO: Refuse a segment row after the table is complete.

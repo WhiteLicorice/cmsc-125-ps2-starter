@@ -81,7 +81,7 @@ Analysis, and Collaboration.
 
 ## The First Run
 
-A fresh clone builds without warnings. It passes 6 of the 104 cases and exits 1. The same run reports 0 of the 4
+A fresh clone builds without warnings. It passes 6 of the 106 cases and exits 1. The same run reports 0 of the 4
 invariant checks passed.
 The 6 passing cases test nothing you wrote. They check command-line refusals.
 `src/main.c` is complete, so it refuses a bad option before your code runs.
@@ -146,7 +146,7 @@ python3 --version
 
 ## The Corpus
 
-The 104 cases under `cases/` are the cases the instructor grades with. Each
+The 106 cases under `cases/` are the cases the instructor grades with. Each
 `.script` file holds a machine description and a list of requests. Each `.args`
 file holds the command line. Each `.expect` file holds the expected exit code,
 the expected diagnostic, and every expected output line.
