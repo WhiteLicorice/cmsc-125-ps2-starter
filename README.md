@@ -121,7 +121,7 @@ python3 --version
 Install WSL2 with Ubuntu from PowerShell.
 
 ```powershell
-wsl --install -d Ubuntu
+wsl --install -d Ubuntu-24.04
 ```
 
 Open the Ubuntu terminal and install the tools inside it.
@@ -139,6 +139,7 @@ under `/mnt/c` works but it's slower.
 ```bash
 cc --version
 make --version
+git --version
 python3 --version
 ```
 
