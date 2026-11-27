@@ -8,7 +8,8 @@ one placement policy. The translator turns an offset inside a segment into a
 physical address, or reports the fault the access raises. A script drives both.
 
 This project runs on Linux, on macOS, and on Windows through WSL2 Ubuntu. It
-uses the POSIX `mmap` call and nothing else outside the C standard library.
+maps memory with the POSIX `mmap` call. The C standard library and POSIX helpers
+such as `strtok_r` serve the rest of the program.
 
 ## Pair
 
