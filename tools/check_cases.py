@@ -590,7 +590,10 @@ def derive(lines, machine, policy, exit_code, problems):
 def run_case(script_path, repo_root):
     """Runs one case and returns a list of problems, empty when it passes."""
     problems = []
-    name = script_path.relative_to(repo_root)
+    try:
+        name = script_path.relative_to(repo_root)
+    except ValueError:
+        name = script_path
 
     spec = parse_expect(script_path.with_suffix(".expect"))
     args = parse_args_file(script_path.with_suffix(".args"))
@@ -666,7 +669,11 @@ def main():
         try:
             name, problems = run_case(script_path, repo_root)
         except CaseError as error:
-            name, problems = script_path.relative_to(repo_root), [str(error)]
+            try:
+                name = script_path.relative_to(repo_root)
+            except ValueError:
+                name = script_path
+            problems = [str(error)]
         if problems:
             failures.append(name)
             print(f"[FAIL] {name}")
