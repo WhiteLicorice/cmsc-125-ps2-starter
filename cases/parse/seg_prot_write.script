@@ -1,2 +1,5 @@
 arena 512
 seg code 4096 1024 up rx-
+seg heap 8192 1024 up rw-
+seg stack 16384 1024 down rw-
+translate code 0 read
