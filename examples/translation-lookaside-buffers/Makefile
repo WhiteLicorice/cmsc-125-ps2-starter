@@ -20,8 +20,7 @@ tlb: tlb.c
 check: tlb
 	@pass=0; fail=0; \
 	for case in $(CASES); do \
-	  ./tlb --case $$case > tlb.tmp.out; \
-	  if [ "$$(cat expected/$$case.txt)" = "$$(cat tlb.tmp.out)" ]; then \
+	  if ./tlb --case $$case > tlb.tmp.out && cmp -s expected/$$case.txt tlb.tmp.out; then \
 	    echo "$$case: ok"; \
 	    pass=$$((pass + 1)); \
 	  else \

@@ -20,8 +20,7 @@ repl: repl.c
 check: repl
 	@pass=0; fail=0; \
 	for case in $(CASES); do \
-	  ./repl --case $$case > repl.tmp.out; \
-	  if [ "$$(cat expected/$$case.txt)" = "$$(cat repl.tmp.out)" ]; then \
+	  if ./repl --case $$case > repl.tmp.out && cmp -s expected/$$case.txt repl.tmp.out; then \
 	    echo "$$case: ok"; \
 	    pass=$$((pass + 1)); \
 	  else \
