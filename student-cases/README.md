@@ -31,8 +31,8 @@ An `.expect` file holds one directive on a line.
 | `argv <arguments>` | run this command line instead of the case's own |
 
 Name a boundary the published corpus misses. A handle name of exactly 15
-characters, a script line of exactly 511 bytes, and a base plus bound of exactly
-1048576 bytes are all good choices. The corpus tests each one only on the
+characters is a good choice. So is a script line of exactly 511 bytes, or a base
+plus bound of exactly 1048576 bytes. The corpus tests each one only on the
 invalid side.
 
 ## Run Your Case
