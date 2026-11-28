@@ -174,8 +174,7 @@ static int pick_victim(const struct model *m, enum policy pol, int nframes,
 }
 
 /* Run one policy at one frame count, and print its trace. */
-static struct result run_policy(const struct model *m, enum policy pol, int nframes,
-                                int verbose)
+static struct result run_policy(const struct model *m, enum policy pol, int nframes)
 {
     int  frames[MAX_FRAMES];
     int  use[MAX_FRAMES];
@@ -194,11 +193,9 @@ static struct result run_policy(const struct model *m, enum policy pol, int nfra
         last[i] = -1;
     }
 
-    if (verbose) {
-        printf("policy %s, frames %d\n", policy_name(pol), nframes);
-        printf("  %3s  %4s  %-*s  %-6s  %s\n", "ref", "page", width, "frames",
-               "result", "evicted");
-    }
+    printf("policy %s, frames %d\n", policy_name(pol), nframes);
+    printf("  %3s  %4s  %-*s  %-6s  %s\n", "ref", "page", width, "frames",
+           "result", "evicted");
 
     for (int t = 0; t < m->nrefs; t++) {
         int page = m->ref[t];
@@ -225,23 +222,21 @@ static struct result run_policy(const struct model *m, enum policy pol, int nfra
                 hand = (slot + 1) % nframes;
         }
 
-        if (verbose) {
-            char fb[64];
-            char eb[16];
-            size_t u = 0;
+        char fb[64];
+        char eb[16];
+        size_t u = 0;
 
-            for (int i = 0; i < nframes; i++) {
-                if (frames[i] < 0)
-                    u += (size_t)snprintf(fb + u, sizeof fb - u, "%s.", i ? " " : "");
-                else
-                    u += (size_t)snprintf(fb + u, sizeof fb - u, "%s%d", i ? " " : "", frames[i]);
-            }
-            if (evicted < 0)
-                snprintf(eb, sizeof eb, "-");
+        for (int i = 0; i < nframes; i++) {
+            if (frames[i] < 0)
+                u += (size_t)snprintf(fb + u, sizeof fb - u, "%s.", i ? " " : "");
             else
-                snprintf(eb, sizeof eb, "%d", evicted);
-            printf("  %3d  %4d  %-*s  %-6s  %s\n", t, page, width, fb, result, eb);
+                u += (size_t)snprintf(fb + u, sizeof fb - u, "%s%d", i ? " " : "", frames[i]);
         }
+        if (evicted < 0)
+            snprintf(eb, sizeof eb, "-");
+        else
+            snprintf(eb, sizeof eb, "%d", evicted);
+        printf("  %3d  %4d  %-*s  %-6s  %s\n", t, page, width, fb, result, eb);
     }
 
     struct result r;
@@ -250,9 +245,8 @@ static struct result run_policy(const struct model *m, enum policy pol, int nfra
     r.hits = hits;
     r.misses = misses;
 
-    if (verbose)
-        printf("  hits %d, misses %d, hit rate %.2f%%\n\n", hits, misses,
-               100.0 * hits / m->nrefs);
+    printf("  hits %d, misses %d, hit rate %.2f%%\n\n", hits, misses,
+           100.0 * hits / m->nrefs);
 
     return r;
 }
@@ -601,7 +595,7 @@ static int run_model(struct model *m)
 
     for (int p = 0; p < m->npols; p++)
         for (int f = 0; f < m->nframe_counts; f++)
-            results[n++] = run_policy(m, m->pol[p], m->frame_count[f], 1);
+            results[n++] = run_policy(m, m->pol[p], m->frame_count[f]);
 
     printf("summary\n");
     printf("  %-8s %6s  %5s  %6s  %8s\n", "policy", "frames", "hits",

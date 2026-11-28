@@ -42,15 +42,12 @@
 #define MAX_SEGS    16
 #define MAX_RATES   16
 
-enum { SEG_WALK };
-
 struct access {
     int proc;
     int vaddr;
 };
 
 struct segment {
-    int kind;
     int proc;
     int base;
     int count;
@@ -278,9 +275,8 @@ static void report_prog(const struct model *m)
     for (int i = 0; i < m->nsegs; i++) {
         const struct segment *g = &m->segs[i];
 
-        if (g->kind == SEG_WALK)
-            printf(" %s walk %d,%d,%d,%d", m->procs[g->proc], g->base,
-                   g->count, g->size, g->passes);
+        printf(" %s walk %d,%d,%d,%d", m->procs[g->proc], g->base,
+               g->count, g->size, g->passes);
     }
 
     printf("\n");
@@ -479,7 +475,6 @@ static int parse(struct model *m, int argc, char **argv)
 
             if (n != 4 || m->nsegs >= MAX_SEGS)
                 return -1;
-            m->segs[m->nsegs].kind = SEG_WALK;
             m->segs[m->nsegs].proc = proc;
             m->segs[m->nsegs].base = values[0];
             m->segs[m->nsegs].count = values[1];
