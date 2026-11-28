@@ -168,11 +168,12 @@ short README and an example in the same three-file form. Run it with
 `./check.sh student-cases`.
 
 The runner compares every output line exactly. It also derives the run's own
-numbers from its own output. It checks the alignment of each address, the size
-of each block against the split rule, the tiling of the arena by the live blocks
-and the free list, every dump against the free space the live blocks leave, the
-summary against the tiling, and every translation against its segment row. A
-case file that agrees with a wrong program still fails.
+numbers from its own output. It checks the alignment of each address and the
+size of each block against the split rule. It checks the tiling of the arena by
+the live blocks and the free list. It checks every dump against the free space
+the live blocks leave. It checks the summary against the tiling and every
+translation against its segment row. A case file that agrees with a wrong
+program still fails.
 
 `check.sh` runs the four invariant checks after the public cases. They cover
 byte-identical runs, arena stress, translation independence, and arena reuse.
