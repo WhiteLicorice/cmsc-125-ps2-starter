@@ -350,8 +350,9 @@ static void run_faultpath(const struct model *m)
     printf("  %3d  %-30s  frame %d * 4 KiB + %d\n", 13,
            "form the physical address", victim_frame, offset);
     printf("\n");
-    printf("note: vpn %d holds no tlb entry, so no victim invalidation runs\n",
-           evicted);
+    if (!page_in_list(m->fp_tlb_vpn, m->fp_ntlb, evicted))
+        printf("note: vpn %d holds no tlb entry, so no victim invalidation runs\n",
+               evicted);
 
     printf("frames after the load:");
     for (int i = 0; i < m->fp_frames; i++)
@@ -473,8 +474,6 @@ static int parse(struct model *m, int argc, char **argv)
         } else if (strcmp(argv[i], "--policy") == 0 && i + 1 < argc) {
             if (parse_policies(argv[++i], m) != 0)
                 return -1;
-        } else if (strcmp(argv[i], "--name") == 0 && i + 1 < argc) {
-            snprintf(m->name, sizeof m->name, "%s", argv[++i]);
         } else if (strcmp(argv[i], "--faultpath") == 0) {
             m->faultpath = 1;
         } else if (strcmp(argv[i], "--fp-frames") == 0 && i + 1 < argc) {

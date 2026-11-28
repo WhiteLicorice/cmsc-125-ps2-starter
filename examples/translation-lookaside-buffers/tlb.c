@@ -10,17 +10,12 @@
  *   - The TLB is fully associative, so an entry can hold any page.
  *   - An empty entry fills before an occupied one is evicted.
  *   - A hit refreshes the entry's recency.
- *   - A miss fills the entry that has gone unreached for the longest.
+ *   - A miss fills the entry that has gone unused for the longest.
  *   - A switch between two processes empties the TLB unless the run uses
  *     address space identifiers.
  *   - A TLB lookup costs tlb_ns. A main memory access costs mem_ns.
  *
- * The reference string is built from three directives:
- *
- *   --proc NAME              set the process for the accesses that follow
- *   --walk BASE,COUNT,SIZE,PASSES
- *                            read COUNT words at BASE + i*SIZE, PASSES times
- *   --eat LIST               print the cost table for these hit rates
+ * The reference string is built from the named case.
  *
  * Build:
  *   cc -std=c11 -Wall -Wextra -Werror tlb.c -o tlb
@@ -436,7 +431,7 @@ static int parse_doubles(const char *text, double *out, int maximum)
 }
 
 /* The caller zeroes the model first. This function supplies the defaults and
- * reads the flags, so the two programs that build a model agree on both. */
+ * reads the flags. */
 static int parse(struct model *m, int argc, char **argv)
 {
     int proc = 0;
@@ -487,8 +482,6 @@ static int parse(struct model *m, int argc, char **argv)
             if (n < 1)
                 return -1;
             m->nrates = n;
-        } else if (strcmp(argv[i], "--name") == 0 && i + 1 < argc) {
-            snprintf(m->name, sizeof m->name, "%s", argv[++i]);
         } else {
             return -1;
         }

@@ -486,10 +486,14 @@ def derive(lines, machine, policy, exit_code, problems):
                 wanted = "protect"
             if match.group(5) is not None:
                 if match.group(5) != wanted:
+                    if wanted is None:
+                        needed = "translate"
+                    else:
+                        needed = f"raise {wanted}"
                     problems.append(
                         f"{label}: the {name} row raises {match.group(5)} for "
-                        f"offset {offset} and {operation}, but it must raise "
-                        f"{wanted}")
+                        f"offset {offset} and {operation}, but it must "
+                        f"{needed}")
             elif wanted is not None:
                 problems.append(f"{label}: the {name} row translated offset "
                                 f"{offset} to {match.group(4)}, but it must raise "
