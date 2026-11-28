@@ -3,7 +3,8 @@
  *
  * The program asks the operating system for one region, once, and never asks
  * again. The region is private and anonymous, so no host address reaches the
- * output. Every address this program prints is an offset into the arena.
+ * output. Every allocation address this program prints is an offset into the
+ * arena.
  *
  * A block lives at some offset in the arena. Its first 16 bytes are its
  * header: an 8-byte size, which counts the header, and an 8-byte link to the
