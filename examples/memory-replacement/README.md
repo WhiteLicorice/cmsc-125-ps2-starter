@@ -71,7 +71,7 @@ The simulator implements the model below.
 - The trace prints the frames in slot order. A dot marks an empty frame.
 - The fault path adds a TLB with two entries and a FIFO replacement rule. It
   follows one load through the TLB, the page table, one page fault, and one
-  replacement. It clears the victim's present bit before the frame is reused.
+  replacement. It clears the victim's present bit before it reuses the frame.
 
 ## The Cases
 

@@ -235,7 +235,7 @@ keeps losing a page that the walk needs again.
 ### `stride`
 
 One process reads 16 integers, one every 16 bytes. Each access lands on a
-different page. No page is read twice.
+different page. The process reads each page once.
 
 ```bash
 ./tlb --case stride

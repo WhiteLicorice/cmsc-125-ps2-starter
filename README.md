@@ -76,7 +76,7 @@ Analysis, and Collaboration.
 | Code | Meaning |
 |---|---|
 | 0 | Every request ran. |
-| 65 | The command line or the script file was refused. |
+| 65 | The program refused the command line or the script file. |
 | 70 | An ownership error, an allocation failure, or an arena-mapping failure. |
 
 ## The First Run
