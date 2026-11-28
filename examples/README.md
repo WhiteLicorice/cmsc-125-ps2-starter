@@ -1,8 +1,8 @@
 <!--no-pdf-->
 # Worked Examples
 
-This folder holds the worked examples for three Unit 1 subtopics that Problem
-Set 2, Memory Mechanisms, Allocation, and Freeing, draws on in its Background
+This folder holds the worked examples for three Unit 1 subtopics. Problem
+Set 2 draws on Memory Mechanisms, Allocation, and Freeing in its Background
 section. Each subtopic has its own folder. Each folder holds its own `make` and
 `make check`.
 

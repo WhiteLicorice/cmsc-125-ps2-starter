@@ -94,9 +94,10 @@ Each trace row is one access.
 Without address space identifiers, an entry shows the page number alone. With
 them, an entry shows the process label and the page number, as in `A0`.
 
-The summary prints the access count, the hits, the misses, the hit rate, the
-effective access time in nanoseconds, and the effective access time of a
-machine with no TLB at all. The last figure is two memory accesses. A machine
+The summary prints the access count, the hits, the misses, and the hit rate.
+It also prints the effective access time in nanoseconds. A second time figure
+is the effective access time of a machine with no TLB at all. The last figure
+is two memory accesses. A machine
 with no TLB reads the page table for every access.
 
 ## The Cases
