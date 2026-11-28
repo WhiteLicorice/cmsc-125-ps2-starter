@@ -1,7 +1,7 @@
 /*
  * demo_cases.c
  *
- * The student-facing case list for the paging translator.
+ * The case list for the paging translator.
  * Every case here appears in the README's worked examples or its size table.
  *
  * See the README beside this file for the model and the case table.

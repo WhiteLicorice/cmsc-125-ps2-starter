@@ -1,10 +1,10 @@
 <!--no-pdf-->
 # Paging and Page Tables
 
-`pagesim.c` is a deterministic paging translator. `demo_cases.c` holds the
-student case list. A translation case prints one page table and one table of
-translated addresses. The size case prints the size of a linear page table for
-several address widths. The recorded output of every case is in `expected/`.
+`pagesim.c` is a deterministic paging translator. `demo_cases.c` holds the case
+list. A translation case prints one page table and one table of translated
+addresses. The size case prints the size of a linear page table in three
+configurations. The recorded output of every case is in `expected/`.
 Every case runs on the same model, so the same input always produces the same
 output on every host.
 
@@ -71,7 +71,7 @@ cc -std=c11 -Wall -Wextra -Werror
 | `basic` | `./pagesim basic` | Four addresses through the worked page table, all mapped |
 | `offset` | `./pagesim offset` | Two addresses in one page, so both use one frame |
 | `faults` | `./pagesim faults` | One successful access, two protection faults, and one unmapped fault |
-| `sizes` | `./pagesim sizes` | The size of a linear page table at three address widths, and the two Sv32 levels |
+| `sizes` | `./pagesim sizes` | The size of a linear page table in three configurations, and the two Sv32 levels |
 
 Run the translator with no argument to print every case at once.
 

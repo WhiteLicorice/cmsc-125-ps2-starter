@@ -30,8 +30,8 @@ You may change only these files and folders:
 - The Pair section of `README.md`
 - `student-cases/`, which holds the one case of your own
 
-Everything else is fixed. `include/ps2.h`, `src/main.c`, and `src/arena.c` are
-given to you complete. `cases/`, `tools/check_cases.py`,
+Everything else is fixed. The starter gives you `include/ps2.h`, `src/main.c`,
+and `src/arena.c` complete. `cases/`, `tools/check_cases.py`,
 `tools/check_invariants.py`, and the workflow are the grading corpus and its
 runner. The manual states every rule these files follow.
 

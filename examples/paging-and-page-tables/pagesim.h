@@ -3,9 +3,8 @@
  *
  * Shared declarations for the paging translator.
  *
- * The program that links pagesim.c supplies the case list. The student-facing
- * build supplies the demo and worked-example cases in demo_cases.c. Another
- * build can supply a different list.
+ * The program that links pagesim.c supplies the case list. This build supplies
+ * the demo and worked-example cases in demo_cases.c.
  *
  * The model is fixed. The README beside this file states it.
  */

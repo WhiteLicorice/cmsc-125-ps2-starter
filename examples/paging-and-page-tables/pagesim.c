@@ -6,9 +6,9 @@
  * This file holds the model and the printer. The case list is linked in from
  * the build. A case is either a translation case, which prints a page table
  * and a table of translated addresses, or a size case, which prints the size
- * of a linear page table for several address widths.
+ * of a linear page table in three configurations.
  *
- * The student-facing build links demo_cases.c:
+ * The build links demo_cases.c:
  *   cc -std=c11 -Wall -Wextra -Werror -o pagesim pagesim.c demo_cases.c
  *
  * Run one case:

@@ -1,10 +1,10 @@
 # Build and check the paging-and-page-tables examples.
 #
-# pagesim.c holds the model and the printer. demo_cases.c holds the
-# student-facing cases. A translation case prints a page table and a table of
-# translated addresses. The size case prints a table of page-table sizes.
-# make check compares the output of every case with the recorded output in
-# expected/. This folder holds only the cases the students see.
+# pagesim.c holds the model and the printer. demo_cases.c holds the cases. A
+# translation case prints a page table and a table of translated addresses. The
+# size case prints a table of page-table sizes. make check compares the output
+# of every case with the recorded output in expected/. This folder holds only
+# the worked-example cases.
 
 CC       ?= cc
 CFLAGS   := -std=c11 -Wall -Wextra -Werror

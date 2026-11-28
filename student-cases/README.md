@@ -17,8 +17,8 @@ A case is a `.script` file with two neighbours.
 - `name.expect` holds the expected exit code and the expected output.
 
 The manual's "The Script File", "The Allocator", and "The Report" sections state
-every rule. The runner reads the same three files for the published corpus, so a
-case here is written the same way.
+every rule. The runner reads the same three files for the published corpus, so
+write a case here the same way.
 
 An `.expect` file holds one directive on a line.
 

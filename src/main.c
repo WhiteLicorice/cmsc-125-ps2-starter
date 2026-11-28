@@ -7,7 +7,7 @@
  *
  *   0    every request ran
  *   65   the command line or the script file was refused
- *   70   an ownership error, or the arena ran out
+ *   70   an ownership error, the arena ran out, or the arena could not be mapped
  *
  * The request loop stays here so that the four modules you write hold the
  * mechanism and the output, and nothing else.

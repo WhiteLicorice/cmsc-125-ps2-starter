@@ -62,7 +62,7 @@ The simulator implements the model below.
 - The TLB starts empty.
 - A miss fills the lowest-numbered empty slot, when one exists.
 - Once every slot holds an entry, a miss replaces the entry that has gone
-  unreached for the longest. That entry is the least recently used one.
+  unused for the longest. That entry is the least recently used one.
 - A hit keeps its slot and its translation.
 - A hit and a miss both refresh the entry's recency. The entry the access used
   becomes the most recent one.
